@@ -1,0 +1,89 @@
+.header {
+    text-align: center;
+    font-style: italic;
+    color:red;
+    font-size: 20px;
+
+}
+body{
+    text-align: center;
+    background-image: url(bowl.jpg), url(formula-meals.jpg); 
+    background-position: right bottom, left top;
+    background-repeat: no-repeat, repeat;
+    background-size: 3090px;
+    border-radius: 2px;
+}
+nav{
+    width: 100%;
+    height: 60px;
+    padding: 0px;
+    background-color: rgb(241, 228, 228);
+    
+}
+li{
+    float: left;
+    list-style: none;
+}
+
+a{
+    display: block;
+    color: blue;
+    padding: 20px 14px;
+    text-decoration: none;
+
+}
+a:hover{
+text-decoration: underline;
+}
+button{
+    color: black;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: lightgreen;
+   
+}
+
+.link{
+    color: royalblue;
+    text-decoration:none;
+    cursor: pointer;
+}
+
+.link:hover{
+    text-decoration: underline;
+}
+
+.login_form{
+margin-bottom: 7px;
+}
+
+.input{
+    
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid grey;
+    outline: none;
+    transition: border-color 0.3s;
+    
+}
+
+.input:focus{
+    border-color: lightgreen;
+    background: white;
+
+}
+
+.input-error{
+    color: red;
+    border-color:red;
+
+}
+
+.form_hidden{
+    display: none;
+}

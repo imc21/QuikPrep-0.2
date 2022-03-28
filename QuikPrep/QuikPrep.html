@@ -1,0 +1,130 @@
+<!Doctype html>
+<html>
+    <head>
+        <title> Quik Prep</title>
+        <link rel="stylesheet" href="style.css"> 
+ 
+    </head>
+    <body>
+        <div class="header">
+            <h1> Quik Prep </h1>
+        </div>
+
+        <nav>
+            <ul class="links">
+            <li><a href="QuikPrep.html"> HomePage </a></li>      
+            <li><a href="about.html">About</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="login.html">Login </a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+        </nav>
+
+        <br />
+        <img src="bowl.jpg"  width="400" height="250">
+
+        <br />
+        <div class="container">
+         <form class="form" id="login"> 
+            <div class="login_form">
+                <br />
+               <input id="email" type="text" class="input" autofocus placeholder="Email or UserName" name="email">
+            </div>  
+   
+            <div class="login_form">
+                <input id="password" type="password" class="input input-error" autofocus placeholder="Password" name="pword">
+            </div>
+            <div class="remember">
+                <input type="checkbox" id="rememberme">
+                <label id="rememberme">Remember Me</label>
+            </div>
+            <br />
+                <button id="loginbutton" type="submit" class="loginbtn">Log in</button>         
+
+            <a href="#" class="link">Forgot Password?</a>
+            <a href="#" class="link" id="CreateAccountlink">Don't have an account? Create Account</a>
+         </form>
+
+         <form class="form form_hidden " id="Account"> 
+            <div class="CreateAccount_form">
+                <br />
+                <input type="text" class="form-control" id="firstName" autofocus placeholder="First Name">
+             </div>  
+             <br />
+             <div class="CreateAccount_form">
+                <input type="text" class="form-control" id="lastName" autofocus placeholder="Last Name">
+             </div>  
+             <br />
+            <div class="CreateAccount_form">
+               <input type="text" class="form-control" id="userName" autofocus placeholder="Username">
+            </div>  
+            <br />
+            <div class="CreateAccount_form">
+                <input type="email" class="form-control" id="userEmail" autofocus placeholder="Email Address">
+             </div> 
+             <br />
+            <div class="CreateAccount_form">
+                <input type="password" class="form-control" id="userPassword" autofocus placeholder="Password">
+            </div>
+            <br />
+                <button type="submit" class="loginbtn">Sign up</button>
+            <p>
+                <a href="#" class="link" id="Loginlink">Already have an account? Sign in</a>
+                </p>
+          </form>
+
+          <script src="main.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+          
+          <script>
+              var firebaseConfig = {
+    apiKey: "AIzaSyBK_8bSmTVfM9X8_suEiwOutgnX8m4PBI4",
+    authDomain: "quikprep-ef50d.firebaseapp.com",
+    databaseURL: "https://quikprep-ef50d-default-rtdb.firebaseio.com",
+    projectId: "quikprep-ef50d",
+    storageBucket: "quikprep-ef50d.appspot.com",
+    messagingSenderId: "364351031013",
+    appId: "1:364351031013:web:d03a02c5f8be8b7c4df60c",
+    measurementId: "G-GQ3B3NRG1H"
+};
+firebase.initializeApp(firebaseConfig);
+
+var messagesRef = firebase.database()
+ .ref('User Sign Up');
+
+document.getElementById('Account')
+ .addEventListener('submit', submitForm);
+
+function submitForm(e) {
+ e.preventDefault();
+
+ // Get values
+ var firstName = getInputVal('firstName');
+ var lastName = getInputVal('lastName');
+ var userName = getInputVal('userName');
+ var email = getInputVal('userEmail');
+ var password = getInputVal('userPassword');
+
+ saveMessage(firstName, lastName, userName, email, password);
+ document.getElementById('Account').reset();
+}
+
+// Function to get get form values
+function getInputVal(id) {
+ return document.getElementById(id).value;
+}
+
+// Save message to firebase
+function saveMessage(firstName, lastName, userName, email, password) {
+ var newMessageRef = messagesRef.push();
+ newMessageRef.set({
+     firstName: firstName,
+     lastName: lastName,
+     userName: userName,
+     email: email,
+     password: password,
+ });
+}
+          </script>
+    </body>
+</html>
